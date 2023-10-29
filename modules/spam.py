@@ -44,7 +44,8 @@ async def fastspam(client: Client, message: Message):
             coros.append(message.reply_to_message.reply(text))
         else:
             coros.append(client.send_message(message.chat.id, text))
-    await asyncio.wait(coros)
+
+    await asyncio.gather(*coros)
 
 
 modules_help["spam"] = {
