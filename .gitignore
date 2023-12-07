@@ -175,11 +175,3 @@ cython_debug/
 
 unknown_errors.txt
 *.session
-*.json
-*.mp3
-*.mp4
-*.m4a
-*.webp
-*.jpg
-*.png
-*.zip
