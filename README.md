@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://telegra.ph/file/9d6017bc2c58a0816d545.jpg" width="500" alt="zxc-userbot">
+    <img src="images/avatar.jpg" width="500" alt="zxc-userbot">
 </p>
 
 # zxc-userbot
