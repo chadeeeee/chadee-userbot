@@ -25,4 +25,4 @@ commit_time = (
         .strftime("%Y-%m-%d")
     )
 
-userbot_version = f"v2.2.1-stable"
+userbot_version = f"v2.3"
