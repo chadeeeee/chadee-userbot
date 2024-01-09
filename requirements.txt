@@ -9,7 +9,6 @@ dnspython==2.3.0
 environs
 ffmpeg-python
 frozenlist
-gdshortener>=1.0.1
 GitPython
 googletrans
 gTTS

@@ -1,5 +1,4 @@
 import os
-import gdshortener
 import requests
 
 from pyrogram import Client, filters
@@ -19,9 +18,17 @@ async def short(_, message: Message):
         await message.edit(f"<b>Usage: </b><code>{prefix}short [url to short]</code>")
         return
 
-    s = gdshortener.ISGDShortener()
-    shortlink = s.shorten(link)
-    await message.edit(shortlink[0], disable_web_page_preview=True)
+    try:
+        # Using the TinyURL API to shorten the URL
+        response = requests.post("http://tinyurl.com/api-create.php?url=" + link)
+        response.raise_for_status()
+
+        shortlink = response.text
+        await message.edit(shortlink, disable_web_page_preview=True)
+    except requests.exceptions.RequestException as ex:
+        await message.edit(f"<b>Error: {ex}</b>")
+        print(f"An unexpected error occurred: {ex}")
+
 
 
 @Client.on_message(filters.command("urldl", prefix) & filters.me)
@@ -55,7 +62,6 @@ async def urldl(client: Client, message: Message):
     finally:
         os.remove(file_name)
 
-
 @Client.on_message(filters.command("upload", prefix) & filters.me)
 async def upload_cmd(_, message: Message):
     max_size = 512 * 1024 * 1024
@@ -76,7 +82,7 @@ async def upload_cmd(_, message: Message):
             return
 
     if os.path.getsize(file_name) > max_size:
-        await message.edit(f"<b>Files longer than {max_size_mb}MB isn't supported</b>")
+        await message.edit(f"<b>Files longer than {max_size_mb}MB aren't supported</b>")
         os.remove(file_name)
         return
 
@@ -88,12 +94,13 @@ async def upload_cmd(_, message: Message):
         )
 
     if response.ok:
+        # Extract the URL from the HTML response
+        url = response.text.split('value="', 1)[-1].split('"', 1)[0]
         file_size_mb = os.path.getsize(file_name) / 1024 / 1024
         file_age = int(
             min_file_age
             + (max_file_age - min_file_age) * ((1 - (file_size_mb / max_size_mb)) ** 2)
         )
-        url = response.text.replace("https://", "")
         await message.edit(
             f"<b>Your URL: {url}\nYour file will live {file_age} days</b>",
             disable_web_page_preview=True,
