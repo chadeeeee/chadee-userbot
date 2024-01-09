@@ -5,7 +5,7 @@ import subprocess
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix, requirements_list
+from utils.misc import modules_help, prefix, requirements_list, gitrepo
 from utils.db import db
 from utils.scripts import format_exc, restart
 
@@ -41,7 +41,7 @@ async def update(_, message: Message):
     await message.edit("<b>Updating...</b>")
     try:
         subprocess.run([sys.executable, "-m", "pip", "install", "-U", "pip"])
-        subprocess.run(["git", "pull"])
+        subprocess.run(["git", "pull", "origin", str(gitrepo.active_branch)])
         subprocess.run(
             [
                 sys.executable,

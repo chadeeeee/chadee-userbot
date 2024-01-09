@@ -10,15 +10,17 @@ from utils.misc import modules_help, prefix, userbot_version, python_version, gi
 async def support(_, message: Message):
     devs = ["@deadboizxc"]
     random.shuffle(devs)
-
     commands_count = float(len([cmd for module in modules_help for cmd in module]))
 
-    remote_url = list(gitrepo.remote().urls)[0]
+    remote_url = gitrepo.remote("origin").url
+    if remote_url.endswith(".git"):
+        remote_url = remote_url[:-4]
+
     branch_link = f"<a href={remote_url}/tree/{gitrepo.active_branch}>{gitrepo.active_branch}</a>"
 
     await message.edit(
         f"<b>💜 zxc-userbot 💜</b>\n\n"
-        "<b>GitHub:</b> <a href=https://github.com/deadboizxc/zxc-userbot>deadboizxc/zxc-userbot</a>\n"
+        f"<b>GitHub:</b> <a href={remote_url}>{remote_url}</a>\n"
         "<b>License:</b> <a href=https://github.com/deadboizxc/zxc-userbot/blob/master/LICENSE>MIT</a>\n\n"
         "<b>Modules repository:</b> <a href=https://github.com/deadboizxc/custom_modules>"
         "deadboizxc/custom_modules</a>\n"
@@ -33,7 +35,11 @@ async def support(_, message: Message):
 @Client.on_message(filters.command(["version", "ver"], prefix) & filters.me)
 async def version(client: Client, message: Message):
     changelog = ""
-    remote_url = list(gitrepo.remote().urls)[0]
+
+    remote_url = gitrepo.remote("origin").url
+    if remote_url.endswith(".git"):
+        remote_url = remote_url[:-4]
+
     commit_time = (
         datetime.datetime.fromtimestamp(gitrepo.head.commit.committed_date)
         .astimezone(datetime.timezone.utc)
@@ -55,7 +61,7 @@ async def version(client: Client, message: Message):
     branch_link = f"<a href={remote_url}/tree/{gitrepo.active_branch}>{gitrepo.active_branch}</a>"
 
     await message.edit(
-        f"<b>💜 <a href=https://github.com/deadboizxc/zxc-userbot>zxc-userbot</a> 💜</b>\n"
+        f"<b>💜 <a href={remote_url}>zxc-userbot</a> 💜</b>\n"
         f"<b>Version:</b> {ub_version}\n"
         + (f"<b>Branch:</b> {branch_link}\n" if gitrepo.active_branch != "master" else "")
         + f"<b>Commit:</b> <a href={remote_url}/commit/{gitrepo.head.commit.hexsha}>"
@@ -63,7 +69,6 @@ async def version(client: Client, message: Message):
         f"<b>Commit time:</b> <code>{commit_time}</code>",
         disable_web_page_preview=True
     )
-
 
 modules_help["support"] = {
     "support": "Information about userbot",

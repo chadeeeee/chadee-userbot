@@ -153,7 +153,7 @@ async def render_message(app: Client, message: types.Message) -> dict:
             return files_cache[file_id]
 
         content = await app.download_media(file_id, in_memory=True)
-        data = base64.b64encode(content.read()).decode()
+        data = base64.b64encode(bytes(content.getbuffer())).decode()
         files_cache[file_id] = data
         return data
 
@@ -183,7 +183,7 @@ async def render_message(app: Client, message: types.Message) -> dict:
                 {
                     "offset": entity.offset,
                     "length": entity.length,
-                    "type": entity.type,
+                    "type": str(entity.type).split(".")[-1].lower(),
                 }
             )
 
@@ -229,25 +229,6 @@ async def render_message(app: Client, message: types.Message) -> dict:
 
         if from_user.photo:
             author["avatar"] = await get_file(from_user.photo.big_file_id)
-        elif not from_user.photo and from_user.username:
-            # may be user blocked us, we will try to get avatar via t.me
-            t_me_page = requests.get(f"https://t.me/{from_user.username}").text
-            sub = '<meta property="og:image" content='
-            index = t_me_page.find(sub)
-            if index != -1:
-                link = t_me_page[index + 35 :].split('"')
-                if (
-                    len(link) > 0
-                    and link[0]
-                    and link[0] != "https://telegram.org/img/t_logo.png"
-                ):
-                    # found valid link
-                    avatar = requests.get(link[0]).content
-                    author["avatar"] = base64.b64encode(avatar).decode()
-                else:
-                    author["avatar"] = ""
-            else:
-                author["avatar"] = ""
         else:
             author["avatar"] = ""
     elif message.from_user and message.from_user.id == 0:
@@ -278,10 +259,17 @@ async def render_message(app: Client, message: types.Message) -> dict:
         if reply_msg.from_user:
             reply["id"] = reply_msg.from_user.id
             reply["name"] = get_full_name(reply_msg.from_user)
+            if reply_msg.from_user.photo:
+                reply["avatar"] = await get_file(reply_msg.from_user.photo.big_file_id)
+            else:
+                reply["avatar"] = ""
         else:
             reply["id"] = reply_msg.sender_chat.id
             reply["name"] = reply_msg.sender_chat.title
-
+            if reply_msg.sender_chat.photo:
+                reply["avatar"] = await get_file(reply_msg.sender_chat.photo.big_file_id)
+            else:
+                reply["avatar"] = ""
         reply["text"] = get_reply_text(reply_msg)
 
     return {
