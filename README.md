@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="images/avatar.jpg" width="500" alt="zxc-userbot">
+    <img src="images/avatar.gif" width="500" alt="zxc-userbot">
 </p>
 
 # zxc-userbot
@@ -15,9 +15,9 @@
 ## Увага !!
 
 Для двох модулів вам потрібно отримати спеціальні API-ключі.
-Після отримання токенів впишіть їх у файл який відкриється при встановленні.
+Після отримання токенів впишіть їх при встановленні.
 
-- Для модуля [alert_sticker_map](https://github.com/deadboizxc/custom_modules/blob/master/alert_sticker_map.py) перейдіть за посиланням [Alert In UA](https://alerts.in.ua/en) та напишіть в підтримку для отримання API-токена.
+- Для модуля [alert_sticker_map.py](https://github.com/deadboizxc/custom_modules/blob/master/alert_sticker_map.py) перейдіть за посиланням [Alert In UA](https://alerts.in.ua/en) та напишіть в підтримку для отримання API-токена.
 
 - Для модуля [weather.py](https://github.com/deadboizxc/custom_modules/blob/master/weather.py) зареєструйтеся на сайті [OpenWeatherMap](https://home.openweathermap.org/users/sign_up), після чого ви зможете отримати свій API-токен.
 
