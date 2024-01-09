@@ -16,7 +16,7 @@ from utils.config import (
 )
 from utils.misc import prefix
 from utils.db import db
-from utils.misc import userbot_version
+from utils.misc import __userbot_version__
 from utils.scripts import restart
 
 from pyrogram import Client, filters
