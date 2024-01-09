@@ -1,12 +1,10 @@
-import subprocess
 import os
 import sys
-from pathlib import Path
-from importlib import import_module
 import logging
-import platform
 import asyncio
 import datetime
+import subprocess
+
 from time import sleep
 from colorlog import ColoredFormatter
 
@@ -15,19 +13,15 @@ from utils.config import (
     API_HASH_1,
 )
 from utils.misc import prefix
-from utils.db import db
 from utils.misc import __userbot_version__
-from utils.scripts import restart
 
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import ChatPermissions
 
-# Инициализация colorlog
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-# Создаем форматтер с поддержкой цветов
 formatter = ColoredFormatter(
     "%(log_color)s%(levelname)-8s%(reset)s %(blue)s%(message)s",
     datefmt=None,
@@ -41,13 +35,8 @@ formatter = ColoredFormatter(
     }
 )
 
-# Создаем обработчик консольного вывода
 console_handler = logging.StreamHandler()
-
-# Устанавливаем форматтер для обработчика
 console_handler.setFormatter(formatter)
-
-# Добавляем обработчик в логгер
 logger.addHandler(console_handler)
 
 app = Client("my_account_1",
