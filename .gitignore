@@ -164,6 +164,9 @@ cython_debug/
 .idea/
 *.idea
 
+.vscode
+.vscode/*.json
+
 # zxc-userbot
 .DS_Store
 .gitattributes
