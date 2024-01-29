@@ -94,19 +94,17 @@ print_color_text "Встановлення необхідних пакетів. 
 case $uname_output in
     *Android*)
         # Ваш код для Android
-        pkg install -y python3  python3-venv git clang ffmpeg wget libjpeg-turbo libcrypt ndk-sysroot zlib openssl
+        pkg install -y python3 git clang ffmpeg wget libjpeg-turbo libcrypt ndk-sysroot zlib openssl
         ;;
     *Darwin*)
         # Ваш код для macOS
-        brew update
-        brew upgrade
-        brew install python3 python3-venv nano wget zlib gnupg libtiff libwebp cairo
+        sudo brew update
+        sudo brew install python3 python3-venv nano wget zlib gnupg libtiff libwebp cairo
         ;;
     *Linux*)
         # Ваш код для Linux
-        apt update
-        apt upgrade -y
-        apt install -y python3 python3-pip python3-venv nano wget ffmpeg gnupg zlib1g-dev
+        sudo apt update
+        sudo apt install -y python3 python3-pip python3-venv nano wget ffmpeg gnupg zlib1g-dev
         ;;
     *)
         print_color_text "Не вдалося визначити тип системи." "red"
