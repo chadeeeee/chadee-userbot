@@ -59,8 +59,8 @@ async def quote_cmd(client: Client, message: types.Message):
             for msg in messages
             if not msg.empty
         ],
-        "quote_color": "#162330",
-        "text_color": "#fff",
+        "quote_color": "#120f1a",
+        "text_color": "#FFFFFF",
     }
 
     response = requests.post(url, json=params)
@@ -119,8 +119,8 @@ async def fake_quote_cmd(client: Client, message: types.Message):
     url = "https://quotes.fl1yd.su/generate"
     params = {
         "messages": [await render_message(client, q_message)],
-        "quote_color": "#162330",
-        "text_color": "#fff",
+        "quote_color": "#120f1a",
+        "text_color": "#FFFFFF",
     }
 
     response = requests.post(url, json=params)
