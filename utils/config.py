@@ -1,21 +1,22 @@
-import environs
+from dotenv import load_dotenv
+import os
 import platform
 
-env = environs.Env()
-env.read_env("./.env")
+# Загрузка переменных окружения из файла .env
+load_dotenv()
 
-API_ID_1 = env.int('API_ID_1')
-API_HASH_1 = env.str('API_HASH_1')
-ADMIN_CHATID_1 = env.int('ADMIN_CHATID_1')
-ADMIN_USERNAME_1 = env.str('ADMIN_USERNAME_1')
+API_ID = int(os.getenv('API_ID'))
+API_HASH = os.getenv('API_HASH')
+ADMIN_CHATID = int(os.getenv('ADMIN_CHATID'))
+ADMIN_USERNAME = os.getenv('ADMIN_USERNAME')
 
-DB_NAME = env.str('DB_NAME')
+DB_NAME = os.getenv('DB_NAME')
 
-ALERT_IN_UA_TOKEN = env.str('ALERT_IN_UA_TOKEN')
-OPEN_WEATHER_TOKEN = env.str('OPEN_WEATHER_TOKEN')
+ALERT_IN_UA_TOKEN = os.getenv('ALERT_IN_UA_TOKEN')
+OPEN_WEATHER_TOKEN = os.getenv('OPEN_WEATHER_TOKEN')
 
-#TOKEN_1 = env.str('TOKEN_1')
-#CHANNEL_ID = env.int('CHANNEL_ID')
+#TOKEN_1 = os.getenv('TOKEN')
+#CHANNEL_ID = int(os.getenv('CHANNEL_ID'))
 
 if platform.system() == "Windows":
     modules_repo_branch = "win-main"
