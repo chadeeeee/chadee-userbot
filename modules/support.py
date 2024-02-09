@@ -19,7 +19,7 @@ def check_remote_branch_exists(repo, branch_name):
 
 @Client.on_message(filters.command(["support", "repo"], prefix) & filters.me)
 async def support(_, message: Message):
-    devs = ["@deadboizxc"]
+    devs = ["@deadboizxc", "@chadeeeeeeeee"]
     random.shuffle(devs)
     commands_count = float(len([cmd for module in modules_help for cmd in module]))
     remote_url = gitrepo.remote("origin").url
@@ -33,10 +33,10 @@ async def support(_, message: Message):
         branch_link = branch_name
 
     await message.edit(
-        f"<b>💜 zxc-userbot 💜</b>\n\n"
+        f"<b>💜 chadee-userbot 💜</b>\n\n"
         f"<b>GitHub:</b> <a href={remote_url}>{remote_url}</a>\n"
-        "<b>License:</b> <a href=https://github.com/deadboizxc/zxc-userbot/blob/master/LICENSE>MIT</a>\n\n"
-        "<b>Modules repository:</b> <a href=https://github.com/deadboizxc/custom_modules>"
+        "<b>License:</b> <a href=https://github.com/chadeeeee/zxc-userbot/blob/master/LICENSE>MIT</a>\n\n"
+        "<b>Modules repository:</b> <a href=https://github.com/chadee/custom_modules>"
         "deadboizxc/custom_modules</a>\n"
         f"<b>Main developers:</b> {', '.join(devs)}\n\n"
         f"<b>{platform.python_implementation()}:</b> {__python_version__}\n"
@@ -78,7 +78,7 @@ async def version(client: Client, message: Message):
         branch_link = branch_name
 
     await message.edit(
-        f"<b>💜 <a href={remote_url}>zxc-userbot</a> 💜</b>\n"
+        f"<b>💜 <a href={remote_url}>chadee-userbot</a> 💜</b>\n"
         f"<b>Version:</b> {ub_version}\n"
         + (f"<b>Branch:</b> {branch_link}\n" if branch_name != "master" else "")
         + f"<b>Commit:</b> <a href={remote_url}/commit/{gitrepo.head.commit.hexsha}>"

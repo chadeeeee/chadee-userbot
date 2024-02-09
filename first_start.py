@@ -4,19 +4,19 @@ import datetime
 import sys
 from pyrogram import Client
 from utils.zxc_path import _BOT_DIR_
-from utils.config import API_ID_1, API_HASH_1
+from utils.config import API_ID, API_HASH
 
 app = Client(
-    "my_account_1",
-     api_id=API_ID_1,
-     api_hash=API_HASH_1,
+    "chadee",
+     api_id=API_ID,
+     api_hash=API_HASH,
      hide_password=True,
 )
 
-client_1 = Path(_BOT_DIR_, 'client1.py')
+client = Path(_BOT_DIR_, 'client.py')
 
 def main():
-    subprocess.Popen([sys.executable, client_1])
+    subprocess.Popen([sys.executable, client])
 
 
 if __name__ == "__main__":
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     try:
         app.send_message(
             "me",
-            f"[{datetime.datetime.now()}] zxc-userbot launched! \n"
+            f"[{datetime.datetime.now()}] chadee-userbot launched! \n"
         )
     except Exception:
         pass
