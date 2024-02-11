@@ -54,27 +54,27 @@ if [ -s "$ENV_FILE" ]; then
     exit 1
 fi
 
-API_ID_1=$(prompt_input "Введіть API_ID" "cyan")
-API_HASH_1=$(prompt_input "Введіть API_HASH" "cyan")
-ADMIN_CHATID_1=$(prompt_input "Введіть ADMIN_CHATID" "cyan")
-ADMIN_USERNAME_1=$(prompt_input "Введіть ADMIN_USERNAME" "cyan")
+API_ID=$(prompt_input "Введіть API_ID" "cyan")
+API_HASH=$(prompt_input "Введіть API_HASH" "cyan")
+ADMIN_CHATID=$(prompt_input "Введіть ADMIN_CHATID" "cyan")
+ADMIN_USERNAME=$(prompt_input "Введіть ADMIN_USERNAME" "cyan")
 
 DB_NAME=$(prompt_input "Введіть DB_NAME (Натисніть Enter для стандартного імені db)" "cyan")
 DB_NAME=${DB_NAME:-$DB_DEFAULT_NAME}
 
-#TOKEN_1=$(prompt_input "Введіть TOKEN (Натисніть Enter, щоб пропустити)" "cyan")
+#TOKEN=$(prompt_input "Введіть TOKEN (Натисніть Enter, щоб пропустити)" "cyan")
 
 ALERT_IN_UA_TOKEN=$(prompt_input "Введіть ALERT_IN_UA_TOKEN (Натисніть Enter, щоб пропустити)" "cyan")
 OPEN_WEATHER_TOKEN=$(prompt_input "Введіть OPEN_WEATHER_TOKEN (Натисніть Enter, щоб пропустити)" "cyan")
 
-echo "API_ID_1=$API_ID_1" > $ENV_FILE
-echo "API_HASH_1=$API_HASH_1" >> $ENV_FILE
-echo "ADMIN_CHATID_1=$ADMIN_CHATID_1" >> $ENV_FILE
-echo "ADMIN_USERNAME_1=$ADMIN_USERNAME_1" >> $ENV_FILE
+echo "API_ID=$API_ID" > $ENV_FILE
+echo "API_HASH=$API_HASH" >> $ENV_FILE
+echo "ADMIN_CHATID=$ADMIN_CHATID" >> $ENV_FILE
+echo "ADMIN_USERNAME=$ADMIN_USERNAME" >> $ENV_FILE
 echo "DB_NAME=$DB_NAME" >> $ENV_FILE
 
-#if [ -n "$TOKEN_1" ]; then
-#    echo "TOKEN_1=$TOKEN_1" >> $ENV_FILE
+#if [ -n "$TOKEN" ]; then
+#    echo "TOKEN=$TOKEN" >> $ENV_FILE
 #fi
 
 if [ -n "$ALERT_IN_UA_TOKEN" ]; then

@@ -4,7 +4,7 @@ from pathlib import Path
 
 from utils.zxc_path import _BOT_DIR_
 
-client_1 = Path(_BOT_DIR_, 'client1.py')
+client = Path(_BOT_DIR_, 'client.py')
 
 def main():
     subprocess.Popen([sys.executable, client_1])
