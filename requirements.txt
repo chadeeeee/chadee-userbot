@@ -10,7 +10,7 @@ environs
 ffmpeg-python
 frozenlist
 GitPython
-googletrans
+googletrans==4.0.0rc1
 gTTS
 h11
 h2
