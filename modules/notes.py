@@ -21,7 +21,7 @@ async def save_note(client: Client, message: Message):
     except (errors.RPCError, ValueError, KeyError):
         # group is not accessible or isn't created
         chat = await client.create_supergroup(
-            "Zxc_Userbot_Notes_Filters", "Don't touch this group, please"
+            "Chadee_Userbot_Notes_Filters", "Don't touch this group, please"
         )
         db.set("core.notes", "chat_id", chat.id)
 

@@ -72,13 +72,13 @@ async def cell(client: Client, message: Message):
         "<b>Connecting To Telegram Headquarters...</b>",
         "<b>Call Connected.</b>",
         "<b>Telegram: Hello This is Telegram HQ. Who is this?</b>",
-        f"<b>Me: Yo this is ZXC ,Please Connect me to my lil bro,Pavel Durov </b>",
+        f"<b>Me: Yo this is Chadee ,Please Connect me to my lil bro,Pavel Durov </b>",
         "<b>User Authorised.</b>",
         "<b>Calling Shivamani </b>  <code>At +916969696969</code>",
         "<b>Private  Call Connected...</b>",
         "<b>Me: Hello Sir, Please Ban This Telegram Account.</b>",
         "<b>Shivamani : May I Know Who Is This?</b>",
-        f"<b>Me: Yo Brah, I Am ZXC</b>",
+        f"<b>Me: Yo Brah, I Am Chadee</b>",
         "<b>Shivamani : OMG!!! Long time no see, Wassup cat...\nI'll Make Sure That Guy Account Will Get Blocked Within 24Hrs.</b>",
         "<b>Me: Thanks, See You Later Brah.</b>",
         "<b>Shivamani : Please Don't Thank Brah, Telegram Is Our's. Just Gimme A Call When You Become Free.</b>",
@@ -128,7 +128,7 @@ async def ding(client: Client, message: Message):
         "⬜⬜⬛⬜⬜\n⬜⬜⬛⬜⬜\n⬜⬜🔴⬜⬜",
         "⬜⬜⬛⬜⬜\n⬜⬛⬜⬜⬜\n🔴⬜⬜⬜⬜",
         "🔴⬛⬛⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
-        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜\n⬜ ZXC IS BEST ⬜\n⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜\n⬜ CHADEE IS BEST ⬜\n⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜",
     ]
 
     await message.edit_text("ding..dong..ding..dong ...")
@@ -338,7 +338,7 @@ async def smoon(client: Client, message: Message):
         await message.edit_text(animation_chars[i % 8])
 
 
-mention = f"<a href = https://github.com/deadboizxc/zxc-userbot>zxc-userbot</a>"
+mention = f"<a href = https://github.com/chadeeeee/chadee-userbot>chadee-userbot</a>"
 
 @Client.on_message(filters.command("deploy", prefix) & filters.me)
 async def deploy(client: Client, message: Message):
