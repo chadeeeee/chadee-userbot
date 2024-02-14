@@ -17,6 +17,6 @@ async def antispam(_, message: Message):
 
 
 
-modules_help["antispam"] = {
+modules_help["ai"] = {
     "ai [question]": "ask AI something",
 }

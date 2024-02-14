@@ -25,7 +25,7 @@ async def loadmod(client: Client, message: Message):
 
     module_name = message.command[1].lower()
     resp = requests.get(
-        "https://raw.githubusercontent.com/chadeeeee"
+        "https://raw.githubusercontent.com/deadboizxc"
         f"/custom_modules/{modules_repo_branch}/{module_name}.py"
     )
     if not resp.ok:
@@ -87,7 +87,7 @@ async def load_all_mods(client: Client, message: Message):
         os.mkdir(f"{BASE_PATH}/modules/custom_modules")
 
     modules_list = requests.get(
-        "https://api.github.com/repos/chadeeeee/custom_modules/contents/",
+        "https://api.github.com/repos/deadboizxc/custom_modules/contents/",
         params={"ref": modules_repo_branch},
     ).json()
 
@@ -136,7 +136,7 @@ async def updateallmods(_, message: Message):
             continue
 
         resp = requests.get(
-            "https://raw.githubusercontent.com/chadeeeee/"
+            "https://raw.githubusercontent.com/deadboizxc/"
             f"custom_modules/{modules_repo_branch}/{module_name}"
         )
         if not resp.ok:

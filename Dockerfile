@@ -3,7 +3,6 @@ FROM python:3.10
 COPY . .
 
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt \
-    pip list
+    pip install -r requirements.txt
 
-CMD ["bash", "install.sh"]
+CMD ["python3", "client.py"]

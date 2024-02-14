@@ -4,6 +4,7 @@ aiosqlite
 async-timeout
 click
 colorlog
+colorama
 covid
 dnspython==2.3.0
 environs
@@ -26,3 +27,4 @@ qrcode
 requests
 TgCrypto
 yt-dlp
+google-generativeai
