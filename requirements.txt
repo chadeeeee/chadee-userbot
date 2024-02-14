@@ -27,4 +27,4 @@ qrcode
 requests
 TgCrypto
 yt-dlp
-google-generativeai
+openai

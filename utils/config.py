@@ -14,6 +14,7 @@ DB_NAME = os.getenv('DB_NAME')
 
 ALERT_IN_UA_TOKEN = os.getenv('ALERT_IN_UA_TOKEN')
 OPEN_WEATHER_TOKEN = os.getenv('OPEN_WEATHER_TOKEN')
+OPEN_AI = os.getenv('OPEN_AI')
 
 #TOKEN_1 = os.getenv('TOKEN')
 #CHANNEL_ID = int(os.getenv('CHANNEL_ID'))

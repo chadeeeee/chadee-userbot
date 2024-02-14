@@ -1,22 +1,30 @@
-import asyncio
+import os
+import openai
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from utils.misc import modules_help, prefix
 
-import google.generativeai as genai
-genai.configure(api_key="AIzaSyDnI9TthL2226JKrOkRU0hRAsH5367c7yM")
+from utils.config import OPEN_AI
+
+openai.api_key = OPEN_AI
 
 
-@Client.on_message(filters.command(["ai", "gemini",], prefix) & filters.me)
+@Client.on_message(filters.command(["ai", "gpt",], prefix) & filters.me)
 async def antispam(_, message: Message):
-    response = model.generate_content(message.text)
-    res = response.text.upper()
-    await message.edit_text(res)
-
+    await message.edit_text("<b>Generating...</b>")
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "Ваше повідомлення для системи."},
+            {"role": "user", "content": message.text},
+        ],
+        max_tokens=150
+    )
+    await message.edit_text(response.choices[0].message['content'])
 
 
 modules_help["ai"] = {
-    "ai [question]": "ask AI something",
+    "ai [question]": "ask ChatGPT something",
 }
