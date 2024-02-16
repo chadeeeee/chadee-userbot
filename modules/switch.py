@@ -3,13 +3,13 @@ from pyrogram.types import Message
 
 from utils.misc import modules_help, prefix
 
-ru_keys = (
-    """ёйцукенгшщзхъфывапролджэячсмитьбю.Ё"№;%:?ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭ/ЯЧСМИТЬБЮ,"""
+ua_keys = (
+    """йцукенгшщзхїфівапролджєячсмитьбю.₴"№;%:?ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄ/ЯЧСМИТЬБЮ,"""
 )
 en_keys = (
     """`qwertyuiop[]asdfghjkl;'zxcvbnm,./~@#$%^&QWERTYUIOP{}ASDFGHJKL:"|ZXCVBNM<>?"""
 )
-table = str.maketrans(ru_keys + en_keys, en_keys + ru_keys)
+table = str.maketrans(ua_keys + en_keys, en_keys + ua_keys)
 
 
 @Client.on_message(filters.command(["switch", "sw"], prefix) & filters.me)

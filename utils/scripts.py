@@ -12,7 +12,7 @@ from types import ModuleType
 from typing import Dict
 
 from PIL import Image
-from utils.zxc_path import _MAIN_FILE_, _BOT_DIR_
+from utils.chadee_path import _MAIN_FILE_, _BOT_DIR_
 from pyrogram import Client, errors, types
 
 from .misc import modules_help, prefix, requirements_list
