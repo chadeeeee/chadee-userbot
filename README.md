@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="images/avatar.gif" width="500" alt="zxc-userbot">
+    <img src="images/avatar.gif" width="500" alt="chadee-userbot">
 </p>
 
 # chadee-userbot
