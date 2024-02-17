@@ -20,7 +20,7 @@ async def antispam(_, message: Message):
             {"role": "system", "content": "Ваше повідомлення для системи."},
             {"role": "user", "content": message.text},
         ],
-        max_tokens=150
+        max_tokens=15000
     )
     await message.edit_text(response.choices[0].message['content'])
 

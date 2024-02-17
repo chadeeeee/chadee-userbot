@@ -5,7 +5,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from utils.misc import modules_help, prefix
-from utils.zxc_path import _DOWNLOADS_
+from utils.chadee_path import _DOWNLOADS_
 
 @Client.on_message(filters.command("send", prefixes=prefix) & filters.me)
 async def send_file(client, message):

@@ -11,7 +11,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from utils.misc import modules_help, prefix
-from utils.zxc_path import _HOME_DIR_, _BOT_DIR_, _YTDLP_DIR_
+from utils.chadee_path import _HOME_DIR_, _BOT_DIR_, _YTDLP_DIR_
 
 from utils.scripts import import_library
 yt_dlp = import_library("yt_dlp")
