@@ -3,7 +3,7 @@ from pathlib import Path
 import datetime
 import sys
 from pyrogram import Client
-from utils.zxc_path import _BOT_DIR_
+from utils.chadee_path import _BOT_DIR_
 from utils.config import API_ID, API_HASH
 
 app = Client(

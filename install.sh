@@ -58,6 +58,7 @@ API_ID=$(prompt_input "Введіть API_ID" "cyan")
 API_HASH=$(prompt_input "Введіть API_HASH" "cyan")
 ADMIN_CHATID=$(prompt_input "Введіть ADMIN_CHATID" "cyan")
 ADMIN_USERNAME=$(prompt_input "Введіть ADMIN_USERNAME" "cyan")
+OPEN_AI=$(prompt_input "Введіть OPEN_AI" "cyan")
 
 DB_NAME=$(prompt_input "Введіть DB_NAME (Натисніть Enter для стандартного імені db)" "cyan")
 DB_NAME=${DB_NAME:-$DB_DEFAULT_NAME}

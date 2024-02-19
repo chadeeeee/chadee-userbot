@@ -2,6 +2,8 @@ aiohttp
 aiosignal
 aiosqlite
 async-timeout
+cairosvg
+cffi
 click
 colorlog
 colorama
@@ -27,4 +29,4 @@ qrcode
 requests
 TgCrypto
 yt-dlp
-openai
+openai==0.28
