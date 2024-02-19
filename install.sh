@@ -72,6 +72,7 @@ echo "API_ID=$API_ID" > $ENV_FILE
 echo "API_HASH=$API_HASH" >> $ENV_FILE
 echo "ADMIN_CHATID=$ADMIN_CHATID" >> $ENV_FILE
 echo "ADMIN_USERNAME=$ADMIN_USERNAME" >> $ENV_FILE
+echo "OPEN_AI" >> $ENV_FILE
 echo "DB_NAME=$DB_NAME" >> $ENV_FILE
 
 #if [ -n "$TOKEN" ]; then
