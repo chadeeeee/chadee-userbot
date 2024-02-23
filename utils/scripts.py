@@ -77,8 +77,8 @@ async def interact_with(message: types.Message) -> types.Message:
 
     while response[0].from_user.is_self:
         seconds_waiting += 1
-        if seconds_waiting >= 5:
-            raise RuntimeError("bot didn't answer in 5 seconds")
+        if seconds_waiting >= 15:
+            raise RuntimeError("bot didn't answer in 15 seconds")
 
         await asyncio.sleep(1)
         # noinspection PyProtectedMember

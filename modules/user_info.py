@@ -19,6 +19,8 @@ async def get_user_inf(client: Client, message: Message):
 
     user = response.users[0]
     full_user = response.full_user
+    async for photo in client.get_chat_photos(user.id, limit=1):
+        await client.download_media(photo.file_id, "name.jpg")
 
     if user.username is None:
         username = "None"
@@ -34,7 +36,8 @@ async def get_user_inf(client: Client, message: Message):
 |-Deleted: <code>{user.deleted}</code>
 |-BIO: <code>{about}</code>
 </b>"""
-    await message.edit(user_info)
+    async for photo in client.get_chat_photos(user.id, limit=1):
+        await client.send_photo(message.chat.id, photo.file_id, caption=f"{user_info}")
 
 
 @Client.on_message(filters.command("inffull", prefix) & filters.me)
@@ -77,12 +80,13 @@ async def get_full_user_inf(client: Client, message: Message):
 |-Phone calls available: <code>{full_user.phone_calls_available}</code>
 |-Phone calls private: <code>{full_user.phone_calls_private}</code>
 |-Blocked: <code>{full_user.blocked}</code></b>"""
-        await message.edit(user_info)
+        async for photo in client.get_chat_photos(user.id, limit=1):
+            await client.send_photo(message.chat.id, photo.file_id, caption=f"{user_info}")
     except Exception as e:
         await message.edit(format_exc(e))
 
 
 modules_help["user_info"] = {
     "inf [reply|id|username]": "Get brief information about user",
-    "inffull [reply|id|username": "Get full information about user",
+    "inffull [reply|id|username]": "Get full information about user",
 }

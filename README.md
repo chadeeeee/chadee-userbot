@@ -1,8 +1,7 @@
 <p align="center">
-    <img src="images/avatar.gif" width="500" alt="chadee-userbot">
+    # chadee-userbot
 </p>
 
-# chadee-userbot
 
 ## Інфо
 

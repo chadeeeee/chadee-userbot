@@ -20,14 +20,9 @@ async def tiktok(client: Client, message: Message):
         msg = await interact_with(
             await client.send_message("@downloader_tiktok_bot", link)
         )
-        if message.video:
-            await client.send_video(
-                message.chat.id, msg.video.file_id, caption=f"<b>Link: {link}</b>"
-            )
-        if message.photo:
-            await client.send_photo(
-                message.chat.id, msg.photo.file_id, caption=f"<b>Link: {link}</b>"
-            )
+        await client.send_video(
+            message.chat.id, msg.video.file_id, caption=f"<b>Link: {link}</b>"
+        )
     except Exception as e:
         await message.edit(format_exc(e))
     else:
