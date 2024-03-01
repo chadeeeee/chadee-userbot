@@ -6,13 +6,8 @@ from utils.misc import modules_help, prefix
 from utils.scripts import with_reply
 
 
+
 @Client.on_message(filters.command("del", prefix) & filters.me)
-async def del_msg(_, message: Message):
-    await message.delete()
-    await message.reply_to_message.delete()
-
-
-@Client.on_message(filters.command("purge", prefix) & filters.me)
 @with_reply
 async def purge(client: Client, message: Message):
     chunk = []
@@ -32,7 +27,6 @@ async def purge(client: Client, message: Message):
         await client.delete_messages(message.chat.id, chunk)
 
 
-modules_help["purge"] = {
-    "purge [reply]": "Purge (delete all messages) chat from replied message to last",
-    "del [reply]": "Delete replied message",
+modules_help["del"] = {
+    "del [reply]": "Delete all messages chat from replied message to last",
 }

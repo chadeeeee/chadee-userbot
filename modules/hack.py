@@ -39,6 +39,4 @@ async def hack(client, message):
 
 modules_help["hack"] = {
     "hack sik": "hack sikritarsha",
-    "hack bog": "hack bogdan",
-    "hack misha": "hack misha"
 }
