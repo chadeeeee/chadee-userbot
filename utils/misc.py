@@ -11,4 +11,4 @@ prefix = db.get("core.main", "prefix", ".")
 gitrepo = Repo(".")
 
 __python_version__ = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
-__userbot_version__ = f"v1.0"
+__userbot_version__ = f"v2.1"

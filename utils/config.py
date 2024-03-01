@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 import os
 import platform
 
-# Загрузка переменных окружения из файла .env
 load_dotenv()
 
 API_ID = int(os.getenv('API_ID'))
@@ -16,8 +15,6 @@ ALERT_IN_UA_TOKEN = os.getenv('ALERT_IN_UA_TOKEN')
 OPEN_WEATHER_TOKEN = os.getenv('OPEN_WEATHER_TOKEN')
 OPEN_AI = os.getenv('OPEN_AI')
 
-#TOKEN_1 = os.getenv('TOKEN')
-#CHANNEL_ID = int(os.getenv('CHANNEL_ID'))
 
 if platform.system() == "Windows":
     modules_repo_branch = "win-main"
