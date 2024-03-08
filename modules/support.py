@@ -19,7 +19,9 @@ def check_remote_branch_exists(repo, branch_name):
 
 @Client.on_message(filters.command(["support", "repo"], prefix) & filters.me)
 async def support(_, message: Message):
+    await message.edit("<b>Getting infomation...</b>")
     devs = ["@deadboizxc", "@chadeeeeeeeee"]
+    tester = ["@unrecognised_agent"]
     random.shuffle(devs)
     commands_count = float(len([cmd for module in modules_help for cmd in module]))
     remote_url = gitrepo.remote("origin").url
@@ -38,7 +40,8 @@ async def support(_, message: Message):
         "<b>License:</b> <a href=https://github.com/chadeeeee/zxc-userbot/blob/master/LICENSE>MIT</a>\n\n"
         "<b>Modules repository:</b> <a href=https://github.com/chadee/custom_modules>"
         "deadboizxc/custom_modules</a>\n"
-        f"<b>Main developers:</b> {', '.join(devs)}\n\n"
+        f"<b>Main developers:</b> {', '.join(devs)}\n"
+        f"<b>Tester:</b> {', '.join(tester)}\n\n"
         f"<b>{platform.python_implementation()}:</b> {__python_version__}\n"
         f"<b>Modules count:</b> {len(modules_help) / 1}\n"
         f"<b>Commands count:</b> {commands_count}\n"
@@ -48,6 +51,7 @@ async def support(_, message: Message):
 
 @Client.on_message(filters.command(["version", "ver"], prefix) & filters.me)
 async def version(client: Client, message: Message):
+    await message.edit("<b>Getting infomation...</b>")
     changelog = ""
     remote_url = gitrepo.remote("origin").url
     if remote_url.endswith(".git"):

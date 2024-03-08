@@ -24,7 +24,6 @@ from pyrogram.errors import FloodWait
 from pyrogram.types import ChatPermissions
 from git import Repo
 
-gitrepo = Repo(".")
 
 init(autoreset=True)
 

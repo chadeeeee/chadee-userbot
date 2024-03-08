@@ -1,0 +1,8 @@
+.env
+chadee.session
+chadee.session-journal
+.idea
+.git
+.vscode
+__pycache__
+image.png

@@ -13,16 +13,17 @@ openai.api_key = OPEN_AI
 
 @Client.on_message(filters.command(["ai", "gpt",], prefix) & filters.me)
 async def antispam(_, message: Message):
+    prompt = message.text.replace(".gpt ", "")
     await message.edit_text("<b>Generating...</b>")
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "Ваше повідомлення для системи."},
-            {"role": "user", "content": message.text},
+            {"role": "user", "content": prompt},
         ],
-        max_tokens=15000
+        max_tokens=4096
     )
-    await message.edit_text(response.choices[0].message['content'])
+    await message.edit_text(f"👤 <b>Питання:</b> {prompt}\n\n🧠 <b>Відповідь:</b>{response.choices[0].message['content']}")
 
 
 modules_help["ai"] = {

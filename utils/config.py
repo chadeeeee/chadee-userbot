@@ -4,9 +4,9 @@ import platform
 
 load_dotenv()
 
-API_ID = int(os.getenv('API_ID'))
+API_ID = os.getenv('API_ID')
 API_HASH = os.getenv('API_HASH')
-ADMIN_CHATID = int(os.getenv('ADMIN_CHATID'))
+ADMIN_CHATID = os.getenv('ADMIN_CHATID')
 ADMIN_USERNAME = os.getenv('ADMIN_USERNAME')
 
 DB_NAME = os.getenv('DB_NAME')

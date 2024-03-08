@@ -8,6 +8,7 @@ click
 colorlog
 colorama
 covid
+convopyro
 dnspython==2.3.0
 environs
 ffmpeg-python
@@ -27,6 +28,7 @@ Pyrogram
 python-dotenv
 qrcode
 requests
+replicate
 TgCrypto
 yt-dlp
 openai==0.28

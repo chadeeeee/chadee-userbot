@@ -7,10 +7,11 @@ from utils.scripts import format_module_help
 
 @Client.on_message(filters.command(["help", "h"], prefix) & filters.me)
 async def help_cmd(_, message: Message):
+    await message.edit("<b>Getting infomation...</b>")
     if len(message.command) == 1:
         msg_edited = False
         text = (
-            "<b>Help for <a href=https://t.me/deadboizxc>deadboizxc</a>\n"
+            "<b>Help for <a href=https://t.me/chadeeeeeeeeee>chadee</a>\n"
             f"For more help on how to use a command, type <code>{prefix}help [module]</code>\n\n"
             "Available Modules:\n"
         )
