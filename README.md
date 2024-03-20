@@ -1,6 +1,6 @@
 <p align="center">
-        <img src="https://telegra.ph/file/a4674a8fe65d6cfdb4e02.jpg" width="500" alt="Dragon-Userbot">
-    </a>
+    <img src="images/avatar.gif" width="500" alt="chadee-userbot">
+</p>
 
 # chadee-userbot
 

@@ -578,7 +578,6 @@ async def hearth_anim(client, message):
     await asyncio.sleep(0.3)
     await message.edit_text("❤️❤️i❤️❤️love❤️❤️you❤️❤️forever❤️❤️")
 
-
 modules_help["animations"] = {
     "stupid": " stupid animation",
     "gangster": "YO! Gangster animation",

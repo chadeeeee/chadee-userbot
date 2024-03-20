@@ -24,9 +24,12 @@ from pyrogram.errors import FloodWait
 from pyrogram.types import ChatPermissions
 from git import Repo
 
+gitrepo = Repo(".")
 
+# Добавьте этот блок в начало вашего кода
 init(autoreset=True)
 
+# Замените ваш текущий блок logging.basicConfig на следующий код
 logging.basicConfig(level=logging.INFO,
                     format=f"{Style.BRIGHT}{Fore.CYAN}%(levelname)s{Fore.RESET} {Fore.MAGENTA}%(message)s{Fore.RESET}",
                     handlers=[logging.StreamHandler()])

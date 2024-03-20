@@ -20,8 +20,10 @@ async def tiktok(client: Client, message: Message):
         msg = await interact_with(
             await client.send_message("@downloader_tiktok_bot", link)
         )
+        if "Размер скачиваемого видео превышает 20 МБ." in message.text:
+            await message.edit("<b>File is too big!</b>")
         await client.send_video(
-            message.chat.id, msg.photo.file_id, caption=f"<b>Link: {link}</b>"
+            message.chat.id, msg.video.file_id, caption=f"<b>Link: {link}</b>"
         )
     except Exception as e:
         await message.edit(format_exc(e))

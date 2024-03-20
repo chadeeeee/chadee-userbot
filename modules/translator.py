@@ -1,10 +1,12 @@
-from pyrogram import Client, filters
-from utils.scripts import import_library
 from utils.misc import modules_help, prefix
+from utils.config import DETECT
+from pyrogram import Client, filters
 
-googletrans = import_library("googletrans", "googletrans==4.0.0rc1")
-from googletrans import Translator
-trl = Translator()
+from deep_translator import GoogleTranslator
+import detectlanguage
+
+detectlanguage.configuration.api_key = DETECT
+
 
 
 @Client.on_message(filters.command(["tr", "trans"], prefix) & filters.me)
@@ -23,16 +25,14 @@ async def translate(_client, message):
             text = message.reply_to_message.text
         else:
             text = message.reply_to_message.caption
-        detectlang = trl.detect(text)
+        detectlang = detectlanguage.simple_detect(text)
         try:
-            tekstr = trl.translate(text, dest=target)
+            translated = GoogleTranslator(source=detectlang, target=target).translate(text=text)
         except ValueError as err:
             await message.edit("Error: <code>{}</code>".format(str(err)))
             return
         await message.edit(
-            "<b>Translated from <code>{}</code> to <code>{}</code></b>:\n\n<code>{}</code>".format(
-                detectlang.lang, target, tekstr.text
-            )
+            f"<b>Translated from <code>{detectlang}</code> to <code>{target}</code></b>:\n\n<code>{translated}</code>"
         )
     else:
         if len(message.text.split()) <= 2:
@@ -40,29 +40,27 @@ async def translate(_client, message):
             return
         target = message.text.split(None, 2)[1]
         text = message.text.split(None, 2)[2]
-        detectlang = trl.detect(text)
+        detectlang = detectlanguage.simple_detect(text)
         try:
-            tekstr = trl.translate(text, dest=target)
+            translated = GoogleTranslator(source=detectlang, target=target).translate(text=text)
         except ValueError as err:
             await message.edit("Error: <code>{}</code>".format(str(err)))
             return
         await message.edit(
-            "<b>Translated from <code>{}</code> to <code>{}</code></b>:\n\n<code>{}</code>".format(
-                detectlang.lang, target, tekstr.text
-            )
+            f"<b>Translated from <code>{detectlang}</code> to <code>{target}</code></b>:\n\n<code>{translated}</code>"
         )
 
 
 @Client.on_message(filters.command(["transdl", "trdl"], prefix) & filters.me)
 async def translatedl(_client, message):
-    dtarget = message.text.split(None, 2)[1]
-    dtext = message.text.split(None, 2)[2]
+    target = message.text.split(None, 2)[1]
+    text = message.text.split(None, 2)[2]
     try:
-        dtekstr = trl.translate(dtext, dest=dtarget)
+        translated = GoogleTranslator(source=detectlang, target=target).translate(text=text)
     except ValueError as err:
         await message.edit("Error: <code>{}</code>".format(str(err)))
         return
-    await message.edit("{}".format(dtekstr.text))
+    await message.edit(f"{translated}")
 
 
 modules_help["translator"] = {
