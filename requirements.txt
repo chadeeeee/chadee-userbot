@@ -29,7 +29,6 @@ pymongo
 Pyrogram
 python-dotenv
 py-carbon
-pyaudio
 qrcode
 requests
 replicate
