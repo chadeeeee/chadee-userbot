@@ -32,9 +32,9 @@ def user_exec(client: Client, message: Message):
         with redirect_stdout(stdout):
             exec(code)
         text = (
-            "<b>Code:</b>\n"
+            "<b>🐍 Code:</b>\n"
             f"<pre language=python>{code}</pre>\n\n"
-            "<b>Result</b>:\n"
+            "<b>🏆 Result</b>:\n"
             f"<code>{stdout.getvalue()}</code>"
         )
         if message.command[0] == "exnoedit":

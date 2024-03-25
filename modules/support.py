@@ -20,7 +20,7 @@ def check_remote_branch_exists(repo, branch_name):
 @Client.on_message(filters.command(["support", "repo"], prefix) & filters.me)
 async def support(_, message: Message):
     await message.edit("<b>Getting infomation...</b>")
-    devs = ["@deadboizxc", "@chadeeeeeeeee"]
+    devs = ["@chadeeeeeeeee"]
     tester = ["@unrecognised_agent"]
     random.shuffle(devs)
     commands_count = float(len([cmd for module in modules_help for cmd in module]))

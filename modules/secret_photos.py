@@ -16,7 +16,7 @@ async def secret_media(client: Client, message: Message):
         if message.chat.last_name
         else message.chat.first_name
     )
-    caption = f"Secret {message.media.value} from {full_name}"
+    caption = f"<b>Secret {message.media.value} from {full_name}</b>"
     media = await message.download(in_memory=True)
     await client.send_document(
         chat_id="me",

@@ -19,6 +19,12 @@ DETECT = os.getenv('DETECT')
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_ID_SECRET = os.getenv('CLIENT_ID_SECRET')
 
+DEV_KEY = os.getenv('DEV_KEY')
+NAME = os.getenv('NAME')
+PASS = os.getenv('PASS')
+
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+
 if platform.system() == "Windows":
     modules_repo_branch = "win-main"
 elif platform.system() == "Linux":

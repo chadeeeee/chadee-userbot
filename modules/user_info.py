@@ -19,6 +19,7 @@ async def get_user_inf(client: Client, message: Message):
     response = await client.invoke(functions.users.GetFullUser(id=peer))
 
     user = response.users[0]
+    print(user)
     full_user = response.full_user
     async for photo in client.get_chat_photos(user.id, limit=1):
         await client.download_media(photo.file_id, "name.jpg")
@@ -27,16 +28,26 @@ async def get_user_inf(client: Client, message: Message):
         username = "None"
     else:
         username = f"@{user.username}"
-    about = "None" if full_user.about is None else full_user.about
+    bio = "None" if full_user.about is None else full_user.about
+    common = await client.get_common_chats(user.id)
 
-    user_info = f"""|=<b>Username: {username}
-|-Id: <code>{user.id}</code>
-|-Bot: <code>{user.bot}</code>
-|-Scam: <code>{user.scam}</code>
-|-Name: <code>{user.first_name}</code>
-|-Deleted: <code>{user.deleted}</code>
-|-BIO: <code>{about}</code>
-</b>"""
+    user_info = f"""<b>USER INFORMATION:</b>
+
+🆔 <b>User ID:</b> <code>{user.id}</code>
+👤 <b>First Name:</b> {user.first_name}
+🗣️ <b>Last Name:</b> {user.last_name}
+🌐 <b>Username:</b> {user.username}
+📱 <b>Phone number:</b> +{user.phone}
+🤖 <b>Is Bot:</b> <code>{user.bot}</code>
+🚷 <b>Is Scam:</b> <code>{user.scam}</code>
+🚫 <b>Restricted:</b> <code>{user.restricted}</code>
+✅ <b>Verified:</b> <code>{user.verified}</code>
+⭐ <b>Premium:</b> <code>{user.premium}</code>
+📝 <b>User Bio:</b> {bio}
+
+👀 <b>Same groups seen:</b> {len(common)}
+🔗 <b>User permanent link:</b> <a href='tg://user?id={user.id}'>{user.username}</a>
+"""
     async for photo in client.get_chat_photos(user.id, limit=1):
         await message.delete()
         await client.send_photo(message.chat.id, photo.file_id, caption=f"{user_info}")
@@ -65,23 +76,26 @@ async def get_full_user_inf(client: Client, message: Message):
             username = "None"
         else:
             username = f"@{user.username}"
-        about = "None" if full_user.about is None else full_user.about
-        user_info = f"""|=<b>Username: {username}
-|-Id: <code>{user.id}</code>
-|-Bot: <code>{user.bot}</code>
-|-Scam: <code>{user.scam}</code>
-|-Name: <code>{user.first_name}</code>
-|-Deleted: <code>{user.deleted}</code>
-|-BIO: <code>{about}</code>
-|-Contact: <code>{user.contact}</code>
-|-Can pin message: <code>{full_user.can_pin_message}</code>
-|-Mutual contact: <code>{user.mutual_contact}</code>
-|-Access hash: <code>{user.access_hash}</code>
-|-Restricted: <code>{user.restricted}</code>
-|-Verified: <code>{user.verified}</code>
-|-Phone calls available: <code>{full_user.phone_calls_available}</code>
-|-Phone calls private: <code>{full_user.phone_calls_private}</code>
-|-Blocked: <code>{full_user.blocked}</code></b>"""
+        bio = "None" if full_user.about is None else full_user.about
+        user_info = f"""🌐 <b>Username</b>: {username}
+🆔 <b>User ID:</b> <code>{user.id}</code>
+👤 <b>First Name:</b> {user.first_name}
+🗣️ <b>Last Name:</b> {user.last_name}
+🌐 <b>Username:</b> {user.username}
+📱 <b>Phone number:</b> +{user.phone}
+🤖 <b>Is Bot:</b> <code>{user.bot}</code>
+🚷 <b>Is Scam:</b> <code>{user.scam}</code>
+🚫 <b>Restricted:</b> <code>{user.restricted}</code>
+✅ <b>Verified:</b> <code>{user.verified}</code>
+⭐ <b>Premium:</b> <code>{user.premium}</code>
+📝 <b>User Bio:</b> {bio}
+📞 <b>Contact:</b> <code>{user.contact}</code>
+📌 <b>Can pin message:</b> <code>{full_user.can_pin_message}</code>
+💬 <b>Mutual contact:</b> <code>{user.mutual_contact}</code>
+🔒 <b>Access hash:</b> <code>{user.access_hash}</code>
+📲 <b>Phone calls available</b>: <code>{full_user.phone_calls_available}</code>
+🔕 <b>Phone calls private:</b> <code>{full_user.phone_calls_private}</code>
+❌ <b>Blocked:</b> <code>{full_user.blocked}</code></b>"""
         async for photo in client.get_chat_photos(user.id, limit=1):
             await message.delete()
             await client.send_photo(message.chat.id, photo.file_id, caption=f"{user_info}")

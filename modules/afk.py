@@ -34,7 +34,7 @@ async def afk_handler(_, message: types.Message):
     end = datetime.datetime.now().replace(microsecond=0)
     afk_time = end - start
     await message.reply(
-        f"<b>I'm AFK {afk_time}\nReason:</b> <i>{afk_info['reason']}</i>"
+        f"<b>🚶‍♂️I'm AFK {afk_time}\nReason:</b> <i>{afk_info['reason']}</i>"
     )
 
 
@@ -49,7 +49,7 @@ async def afk(_, message):
     afk_info["is_afk"] = True
     afk_info["reason"] = reason
 
-    await message.edit(f"<b>I'm going AFK.\n" f"Reason:</b> <i>{reason}</i>")
+    await message.edit(f"<b>🚶‍♂️I'm going AFK.\n" f"Reason:</b> <i>{reason}</i>")
 
     db.set("core.afk", "afk_info", afk_info)
 
@@ -61,7 +61,7 @@ async def unafk(_, message):
         end = datetime.datetime.now().replace(microsecond=0)
         afk_time = end - start
         await message.edit(
-            f"<b>I'm not AFK anymore.\n" f"I was afk {afk_time}</b>"
+            f"<b>🚶‍♂️❌I'm not AFK anymore.\n" f"I was afk {afk_time}</b>"
         )
         afk_info["is_afk"] = False
     else:
@@ -70,4 +70,6 @@ async def unafk(_, message):
     db.set("core.afk", "afk_info", afk_info)
 
 
-modules_help["afk"] = {"afk [reason]": "Go to afk", "unafk": "Get out of AFK"}
+modules_help["afk"] = {
+    "afk [reason]": "Go to afk", "unafk": "Get out of AFK"
+}

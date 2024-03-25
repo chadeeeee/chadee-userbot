@@ -38,17 +38,17 @@ async def weather_city(data, city):
     sign_feels_like = '+' if feels_like > 0 else ''
 
     info_weather = (
-        f'🌍 **City**: {city}\n'
-        f'🗓 **Date**: {date}\n'
-        f'⏱ **Time**: {time}\n\n'
-        f'{emoji} **Weather**: {weather} - {description}\n'
-        f'🌡️ **Average Temperature**: {sign_temp}{temp}°C\n'
-        f'🌡️ **Feels Like**: {sign_feels_like}{feels_like}°C\n'
-        f'💧 **Humidity**: {humidity}%\n'
-        f'💨 **Wind**: {wind}m/s\n'
-        f'☁️ **Clouds**: {clouds}%\n'
-        f'🌅 **Sunrise**: {sunrise}\n'
-        f'🌇 **Sunset**: {sunset}'
+        f'🌍 <b>City</b>: <code>{city}\n'
+        f'🗓 <b>Date</b>: <code>{date}\n'
+        f'⏱ <b>Time</b>: <code>{time}\n\n'
+        f'{emoji} <b>Weather</b>: <code>{weather}</code> - <code>{description}\n</code>'
+        f'🌡️ <b>**Average Temperature</b>: <code>{sign_temp}{temp}°C\n</code>'
+        f'🌡️ <b>**Feels Like</b>: <code>{sign_feels_like}{feels_like}°C\n</code>'
+        f'💧 <b>**Humidity</b>: <code>{humidity}%\n</code>'
+        f'💨 <b>**Wind</b>: <code>{wind}m/s\n</code>'
+        f'☁️ <b>**Clouds</b>: <code>{clouds}%\n</code>'
+        f'🌅 <b>**Sunrise</b>: <code>{sunrise}\n</code>'
+        f'🌇 <b>**Sunset</b>: <code>{sunset}</code>'
     )
 
     return info_weather
@@ -71,7 +71,7 @@ async def weather_command(_, message):
     else:
         city = message.command[1]
 
-    await message.edit(f"Processing city {city}...")
+    await message.edit(f"<b>Processing city {city}...</b>")
 
     info_weather = await get_weather(city)
 
@@ -80,10 +80,10 @@ async def weather_command(_, message):
 @Client.on_message(filters.command(["set_weather_city", "swcity"], prefixes=prefix) & filters.me)
 async def set_weather_city(_, message):
     if len(message.command) == 1:
-        return await message.edit("City name isn't provided")
+        return await message.edit("<b>City name isn't provided</b>")
 
     db.set("custom.weather", "city", message.command[1])
-    await message.edit(f"City {message.command[1]} set!")
+    await message.edit(f"<b>City {message.command[1]} set!</b>")
 
 modules_help["weather"] = {
         "weather [city]**": "Get weather for the selected city.",

@@ -129,6 +129,7 @@ async def unauth(client: Client, message: Message):
 @Client.on_message(filters.command("spnow", prefix) & filters.me)
 @auth_required
 async def now(client: Client, message: Message):
+    await message.edit("<b>Getting info...</b>")
     sp = spotipy.Spotify(auth=db.get("custom.spotify", "token")["access_token"])
     current_playback = sp.current_playback()
     success = True
